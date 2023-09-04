@@ -1,0 +1,7 @@
+<div (click)="abrirModal()" class="w-full cursor-pointer" *ngIf="pokemon">
+<h2>#{{pokemon.id}}</h2>
+
+<img class="transition-all duration-500 ease-in-out hover:scale-110" [src]="[pokemon.sprites.other.home.front_default]" alt={{pokemon.name}} />
+
+<h2 class="w-full text-center capitalize">{{pokemon.name}}</h2>
+</div>
