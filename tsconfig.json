@@ -29,5 +29,6 @@
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
     "strictTemplates": true
-  }
+  },
+  "exclude": [ "src/app/components/modal/image-selector-mmodal/image-selector-mmodal.component.spec.ts" ]
 }

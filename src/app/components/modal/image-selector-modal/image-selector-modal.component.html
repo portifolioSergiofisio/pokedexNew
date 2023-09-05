@@ -1,0 +1,13 @@
+<img class="absolute top-0 h-1/3" [src]="imgPokemon" alt="{{pokemon.pokemonData.name}}">
+<div class="flex flex-col items-center justify-center absolute right-2 top-10 z-10 gap-1">
+  <h2 class="text-white font-main font-bold uppercase text-xl">select</h2>
+  <img class="h-12 border-2 border-solid rounded-xl cursor-pointer"
+    (click)="selecionarImagem(pokemon.pokemonData.sprites.other.home.front_default)"
+    [src]="pokemon.pokemonData.sprites.other.home.front_default" alt="img pokemon">
+  <img class="h-12 border-2 border-solid rounded-xl cursor-pointer"
+    (click)="selecionarImagem(pokemon.pokemonData.sprites.other.home.front_shiny)"
+    [src]="pokemon.pokemonData.sprites.other.home.front_shiny" alt="img pokemon">
+  <img class="h-12 border-2 border-solid rounded-xl cursor-pointer"
+    (click)="selecionarImagem(pokemon.pokemonData.sprites.other.dream_world.front_default)"
+    [src]="pokemon.pokemonData.sprites.other.dream_world.front_default" alt="img pokemon">
+</div>

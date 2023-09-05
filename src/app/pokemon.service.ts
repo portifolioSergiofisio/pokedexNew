@@ -7,17 +7,13 @@ import axios from 'axios';
 export class PokemonService {
   constructor() { }
   getAllPokemon(offset: number) {
-    return axios.get(`https://pokeapi.co/api/v2/pokemon?limit=151&offset=${offset}`);
+    return axios.get(`https://pokeapi.co/api/v2/evolution-chain/?offset=${offset}&limit=151`);
   }
   getPokemonInfo(url: string) {
-
     return axios.get(url)
   }
 
   getColorFromTypeName(typeName: string): string {
-    console.log(typeName);
-
-
     switch (typeName) {
       case 'grass':
         return '#74CB48';

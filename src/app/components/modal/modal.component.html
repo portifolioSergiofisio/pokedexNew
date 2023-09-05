@@ -1,67 +1,15 @@
 <div class="fixed bottom-0 left-0 w-full h-full bg-gray-500 bg-opacity-30 flex justify-center items-center gap-4 z-50">
   <div
     [ngStyle]="{ 'background-color': backgourndColor, 'background-opacity': 0.5 ,'box-shadow': '8px 10px 40px ' + backgourndColor }"
-    class="relative w-1/4 h-3/4 bg-opacity-50 rounded-3xl flex flex-col justify-between items-center md:w-full md:h-full">
-    <h2 (click)="fecharModal()" class="cursor-pointer absolute top-2 right-2 z-50">X</h2>
-    <h2 class="z-10 text-white font-main font-bold uppercase text-3xl">{{pokemon.name}}</h2>
+    class="bg-white relative w-1/4 h-3/4 bg-opacity-50 rounded-3xl flex flex-col justify-between items-center md:w-full md:h-full">
+    <app-header-modal class="z-10" [pokemon]="pokemon"></app-header-modal>
     <img class="absolute -top-2 -right-2" src="../../../assets/modal/pokeball.svg" alt="pokeball">
-    <img class="absolute top-0 h-1/3" [src]="imgPokemon" alt="{{pokemon.name}}">
-    <div class="flex flex-col items-center justify-center absolute right-2 top-10 z-10 gap-1">
-      <h2 class="text-white font-main font-bold uppercase text-3xl">select</h2>
-      <img class="h-12 border-2 border-solid rounded-xl cursor-pointer"
-        (click)="selecionarImagem(pokemon.sprites.other.home.front_default)"
-        src="{{pokemon.sprites.other.home.front_default}}" alt="img pokemon">
-      <img class="h-12 border-2 border-solid rounded-xl cursor-pointer"
-        (click)="selecionarImagem(pokemon.sprites.other.home.front_shiny)"
-        src="{{pokemon.sprites.other.home.front_shiny}}" alt="img pokemon">
-      <img class="h-12 border-2 border-solid rounded-xl cursor-pointer"
-        (click)="selecionarImagem(pokemon.sprites.other.dream_world.front_default)"
-        src="{{pokemon.sprites.other.dream_world.front_default}}" alt="img pokemon">
-    </div>
+    <app-image-selector-modal class="w-full flex justify-center" [pokemon]="pokemon"></app-image-selector-modal>
     <div class="flex flex-col justify-around w-full h-3/4 bg-white rounded-b-3xl pt-16">
       <div class="flex items-center justify-center w-full gap-2 text-white uppercase">
-        <h2 *ngFor="let type of pokemon.types; let i = index"
-          [ngStyle]="{ 'background-color': pokemonService.getColorFromTypeName(type.type.name) }"
-          class="p-1 text-xs rounded-3xl">{{type.type.name}}</h2>
+        <app-stats-modal class="w-full flex flex-col justify-center gap-2" [pokemon]="pokemon"></app-stats-modal>
       </div>
-      <div>
-        <h2 [ngStyle]="{ 'color': backgourndColor }" class="text-xl font-main font-bold text-center">ABOUT</h2>
-        <div class="flex justify-around text-xs h-16">
-          <div class="flex flex-col justify-between items-center gap-2 w-full">
-            <div class="flex items-center justify-center gap-2 h-full">
-              <img src="../../../assets/modal/weight.svg" alt="weight">
-              <h2>{{pokemon.weight}}g</h2>
-            </div>
-            <h2 class="text-[0.5rem]">Weight</h2>
-          </div>
-          <div class="flex flex-col justify-between items-center gap-2 border-x-2 w-full">
-            <div class="flex items-center justify-center gap-2 h-full">
-              <img src="../../../assets/modal/straighten.svg" alt="height">
-              <h2>{{pokemon.height}}cm</h2>
-            </div>
-            <h2 class="text-[0.5rem]">Height</h2>
-          </div>
-          <div class="flex flex-col justify-between items-center w-full h-full">
-            <h2 *ngFor="let move of pokemon.moves.slice(0,2)" class="capitalize">{{move.move.name}}</h2>
-            <h2 class="mt-2 text-[0.5rem]">Moves</h2>
-          </div>
-        </div>
-      </div>
-      <div>
-        <h2 [ngStyle]="{ 'color': backgourndColor }" class="text-xl font-main font-bold text-center">STATS</h2>
-        <div class="px-2">
-          <div *ngFor="let stat of pokemon.stats" class="flex items-center gap-2 border-b-2 border-solid">
-            <h2 [ngStyle]="{ 'color': backgourndColor }" class="text-xs uppercase w-3/12 break-normal text-center">
-              {{stat.stat.name}}
-            </h2>
-            <h2>{{stat.base_stat}}</h2>
-            <div class="bg-gray-200 h-2 w-full rounded-3xl">
-              <div [ngStyle]="{ 'width.%': (stat.base_stat / 200) * 100, 'background-color': backgourndColor }"
-                class=" h-full rounded-3xl"></div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <app-about-modal [pokemon]="pokemon"></app-about-modal>
     </div>
   </div>
 </div>

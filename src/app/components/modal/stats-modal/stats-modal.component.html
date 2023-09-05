@@ -1,0 +1,21 @@
+<div class="flex justify-center items-end gap-2">
+  <h2 [ngStyle]="{ 'background-color': backgourndColor}"
+    class="text-white font-main font-bold uppercase text-xs border-2 border-solid border-white rounded-xl cursor-pointer py-1 px-2"
+    (click)="atualizarDados(pokemon.evolutionChainData.chain.species.url)">Default</h2>
+  <h2 *ngIf="pokemon.evolutionChainData.chain.evolves_to[0]" [ngStyle]="{ 'background-color': backgourndColor}"
+    class="text-white font-main font-bold uppercase text-xs border-2 border-solid border-white rounded-xl cursor-pointer py-1 px-2"
+    (click)="atualizarDados(pokemon.evolutionChainData.chain.evolves_to[0].species.url)">First Evolve
+  </h2>
+  <h2
+    *ngIf="pokemon.evolutionChainData.chain.evolves_to[0]&&pokemon.evolutionChainData.chain.evolves_to[0].evolves_to[0]"
+    [ngStyle]="{ 'background-color': backgourndColor}"
+    class="text-white font-main font-bold uppercase text-xs border-2 border-solid border-white rounded-xl cursor-pointer py-1 px-2"
+    (click)="atualizarDados(pokemon.evolutionChainData.chain.evolves_to[0].evolves_to[0].species.url)">
+    Second Evolve
+  </h2>
+</div>
+<div class="flex justify-center">
+  <h2 *ngFor="let type of pokemon.pokemonData.types; let i = index"
+    [ngStyle]="{ 'background-color': pokemonService.getColorFromTypeName(type.type.name) }"
+    class="px-2 py-1 text-2xs rounded-3xl">{{type.type.name}}</h2>
+</div>

@@ -1,7 +1,7 @@
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { PokemonService } from './../../pokemon.service';
 import { Component, Input, OnInit } from '@angular/core';
-import { ModalComponent } from '../modal/modal.component'; // Importe o componente do modal aqui
+import { ModalComponent } from '../modal/modal.component';
 
 @Component({
   selector: 'app-pokemon',
@@ -16,11 +16,28 @@ export class PokemonComponent implements OnInit {
   @Input()
   url: string = "";
 
-  constructor(private modalService: NgbModal, private pokemonService: PokemonService) { }
+  constructor(private modalService: NgbModal, public pokemonService: PokemonService) { }
 
   ngOnInit(): void {
+
     this.pokemonService.getPokemonInfo(this.url).then((res: any) => {
-      this.pokemon = res.data;
+      this.pokemonService.getPokemonInfo(res.data.chain.species.url).then((res: any) => {
+        this.pokemon = {
+          pokemonData: null,
+          evolutionChainData: null
+        };
+
+        const evolutionChainUrl = res.data.evolution_chain.url;
+        const pokemonUrl = res.data.varieties[0].pokemon.url;
+
+        this.pokemonService.getPokemonInfo(evolutionChainUrl).then((res: any) => {
+          this.pokemon.evolutionChainData = res.data;
+        });
+
+        this.pokemonService.getPokemonInfo(pokemonUrl).then((res: any) => {
+          this.pokemon.pokemonData = res.data;
+        });
+      });
     });
   }
 

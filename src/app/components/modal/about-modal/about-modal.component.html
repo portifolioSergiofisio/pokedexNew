@@ -1,0 +1,38 @@
+<div>
+  <h2 [ngStyle]="{ 'color': backgourndColor }" class="text-xl font-main font-bold text-center">ABOUT</h2>
+  <div class="flex justify-around text-xs h-16">
+    <div class="flex flex-col justify-between items-center gap-2 w-full">
+      <div class="flex items-center justify-center gap-2 h-full">
+        <img src="../../../assets/modal/weight.svg" alt="weight">
+        <h2>{{pokemon.pokemonData.weight}}g</h2>
+      </div>
+      <h2 class="text-[0.5rem]">Weight</h2>
+    </div>
+    <div class="flex flex-col justify-between items-center gap-2 border-x-2 w-full">
+      <div class="flex items-center justify-center gap-2 h-full">
+        <img src="../../../assets/modal/straighten.svg" alt="height">
+        <h2>{{pokemon.pokemonData.height}}cm</h2>
+      </div>
+      <h2 class="text-[0.5rem]">Height</h2>
+    </div>
+    <div class="flex flex-col justify-between items-center w-full h-full">
+      <h2 *ngFor="let move of pokemon.pokemonData.moves.slice(0,2)" class="capitalize">{{move.move.name}}</h2>
+      <h2 class="mt-2 text-[0.5rem]">Moves</h2>
+    </div>
+  </div>
+</div>
+<div>
+  <h2 [ngStyle]="{ 'color': backgourndColor }" class="text-xl font-main font-bold text-center">STATS</h2>
+  <div class="px-2">
+    <div *ngFor="let stat of pokemon.pokemonData.stats" class="flex items-center gap-2 border-b-2 border-solid">
+      <h2 [ngStyle]="{ 'color': backgourndColor }" class="text-xs uppercase w-3/12 break-normal text-center">
+        {{stat.stat.name}}
+      </h2>
+      <h2>{{stat.base_stat}}</h2>
+      <div class="bg-gray-200 h-2 w-full rounded-3xl">
+        <div [ngStyle]="{ 'width.%': (stat.base_stat / 200) * 100, 'background-color': backgourndColor }"
+          class=" h-full rounded-3xl"></div>
+      </div>
+    </div>
+  </div>
+</div>
