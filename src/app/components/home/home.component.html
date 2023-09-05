@@ -1,8 +1,8 @@
-<main *ngIf="pokemons" class="flex items-center justify-center flex-wrap bg-white max-w-full min-h-full max-h-[100%] m-5 gap-4 rounded-3xl p-5">
-  <div class="w-32 p-2 border-2 border-solid border-gray-500 rounded-3xl transition-all ease-in-out hover:shadow-md hover:shadow-black" *ngFor="let pokemon of pokemons">
-    <app-pokemon
-      namePokemon={{pokemon.name}}
-      url={{pokemon.url}}
-    ></app-pokemon>
+<main *ngIf="pokemons"
+  class="flex items-center justify-center flex-wrap bg-white max-w-full min-h-full max-h-[100%] m-5 gap-4 rounded-3xl p-5">
+  <div
+    class="w-32 p-2 border-2 border-solid border-gray-500 rounded-3xl transition-all ease-in-out hover:shadow-md hover:shadow-black"
+    *ngFor="let pokemon of pokemons">
+    <app-pokemon namePokemon={{pokemon.name}} url={{pokemon.url}}></app-pokemon>
   </div>
 </main>

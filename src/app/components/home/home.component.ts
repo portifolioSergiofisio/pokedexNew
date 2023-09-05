@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent {
   public pokemons!: Array<any>;
-  constructor(private PokemonService: PokemonService) {}
+  constructor(private PokemonService: PokemonService) { }
 
   ngOnInit(): void {
     this.PokemonService.getAllPokemon(0)

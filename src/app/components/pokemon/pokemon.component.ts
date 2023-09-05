@@ -21,7 +21,6 @@ export class PokemonComponent implements OnInit {
   ngOnInit(): void {
     this.pokemonService.getPokemonInfo(this.url).then((res: any) => {
       this.pokemon = res.data;
-      console.log(this.pokemon);
     });
   }
 
